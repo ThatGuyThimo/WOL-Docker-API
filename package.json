@@ -1,0 +1,33 @@
+{
+  "name": "wol-docker-api",
+  "version": "1.0.0",
+  "description": "Wake on lan api created for a docker server",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThatGuyThimo/WOL-Docker-API.git"
+  },
+  "keywords": [
+    "api",
+    "docker",
+    "WOL",
+    "wakeonlan"
+  ],
+  "author": "Thimo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThatGuyThimo/WOL-Docker-API/issues"
+  },
+  "homepage": "https://github.com/ThatGuyThimo/WOL-Docker-API#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "fs": "^0.0.1-security",
+    "net-ping": "^1.2.4",
+    "wake_on_lan": "^1.0.0"
+  }
+}
