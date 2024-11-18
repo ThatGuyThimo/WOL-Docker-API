@@ -32,7 +32,7 @@ router.post('/wake', async (req, res) => {
     res.send(result).status(200)
 })
 
-router.post('/status', async (req, res) => {
+router.get('/status', async (req, res) => {
     const response = req.query
 
     if (response.IP_ADDRESS === undefined || response.MAC_ADDRESS === undefined || response.IP_ADDRESS === "" || response.MAC_ADDRESS === "") {
