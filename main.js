@@ -10,8 +10,8 @@ import { router as WOLrouter } from './routes/WOLroute.js'
 const app = express()
 const httpPort = process.env.HTTPPORT
 const httpsPort = process.env.HTTPSPORT
-const keypath = "./data/certs/thimodehaankey.pem"
-const certpath = "./data/certs/thimodehaan.pem"
+const keypath = "./data/certs/" + process.env.KEYFILE
+const certpath = "./data/certs/" + process.env.CERTFILE
 
 let options
 

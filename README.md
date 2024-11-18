@@ -67,6 +67,8 @@ An open-source Wake-On-LAN (WOL) server built with Node.js and Express, designed
 - `HTTPPORT` – The port to expose the HTTP server. (Default: `8080`)
 - `HTTPSPORT` – The port to expose the HTTPS server. (Default: `8443`)
 - `PHASSPHRASE` – Optional passphrase for SSL/TLS configuration.
+- `KEYFILE` – Optional name of the certificate key file.
+- `CERTFILE` – Optional name of the certificate file.
 
 ---
 
