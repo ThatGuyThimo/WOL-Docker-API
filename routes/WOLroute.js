@@ -14,8 +14,9 @@ const IP_ADDRESS_regex = new RegExp('^([0-9]{1,3}\.){3}[0-9]{1,3}$')
 const MAC_ADDRESS_regex = new RegExp('^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$')
 
 
-router.post('/wake', async (req, res) => {
+router.get('/wake', async (req, res) => {
     const response = req.query
+    console.log(response)
 
     if (response.IP_ADDRESS === undefined || response.MAC_ADDRESS === undefined || response.IP_ADDRESS === "" || response.MAC_ADDRESS === "") {
         res.send("Missing parameters").status(400)

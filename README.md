@@ -65,7 +65,7 @@ The application is Docker-compatible for easy deployment but can also run native
    node server.js
    ```
 
-5. Access the server by sending GET or POST requests to `http://localhost:8080` or `https://localhost:8443` (if SSL is configured). Note: The server does not provide a web interface.
+5. Access the server by sending GET requests to `http://localhost:8080` or `https://localhost:8443` (if SSL is configured). Note: The server does not provide a web interface.
 
 ---
 
@@ -73,7 +73,7 @@ The application is Docker-compatible for easy deployment but can also run native
 
 ### 1. `/WOL/wake`
 **Description**: Sends a Wake-On-LAN packet to wake a target device.  
-**Method**: `POST`  
+**Method**: `GET`  
 **Parameters**:  
 - `MAC_ADDRESS` (string) – The MAC address of the target device.
 - `IP_ADDRESS` (string) – The IP address of the target device.
@@ -122,9 +122,7 @@ Ensure the provided MAC address conforms to one of these formats.
 
 ### Wake a Device
 ```bash
-curl -X POST http://localhost:8080/WOL/wake \
-    -d 'MAC_ADDRESS=20:DE:20:DE:20:DE' \
-    -d 'IP_ADDRESS=192.168.1.100'
+curl -X GET "http://localhost:8080/WOL/wake?MAC_ADDRESS=20-DE-20-DE-20-DE&IP_ADDRESS=192.168.1.100"
 ```
 
 ### Check Device Status
