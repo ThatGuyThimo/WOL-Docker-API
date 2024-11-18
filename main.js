@@ -3,15 +3,14 @@ import https from 'https'
 import fs from 'fs'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
-dotenv.config({path: '.env'})
 
 import { router as WOLrouter } from './routes/WOLroute.js'
 
 const app = express()
 const httpPort = process.env.HTTPPORT
 const httpsPort = process.env.HTTPSPORT
-const keypath = "./data/certs/" + process.env.KEYFILE
-const certpath = "./data/certs/" + process.env.CERTFILE
+const keypath = process.env.KEYFILE
+const certpath = process.env.CERTFILE
 
 let options
 

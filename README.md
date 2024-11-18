@@ -13,28 +13,40 @@ The application is Docker-compatible for easy deployment but can also run native
 ---
 
 ## Installation
-
 ### Docker
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/wol-server.git
-   cd wol-server
+   git clone https://github.com/ThatGuyThimo/WOL-Docker-API.git
+   cd WOL-Docker-API
    ```
 
 2. Create a `.env` file for configuration:
    ```env
    HTTPPORT=8080
    HTTPSPORT=8443
-   PHASSPHRASE=""
-   KEYFILE=""
-   CERTFILE=""
+   PHASSPHRASE=password
+   KEYFILE=./data/certs/keyfile.pem
+   CERTFILE=./data/certs/cerfile.pem
    ```
 
 3. Build and run the Docker container:
    ```bash
-   docker build -t wol-server .
-   docker run -p 8080:8080 -p 8443:8443 --env-file .env wol-server
+   docker build -t WOL-Docker-API .
+   docker run -p 8080:8080 -p 8443:8443 --env-file .env --name WOL-Docker-API WOL-Docker-API
    ```
+
+4. (Optional) Enable SSL:
+   - Ensure you have the SSL `keyfile.pem` (private key) and `certfile.pem` (certificate).
+   - Copy these files into the container:
+     ```bash
+     docker cp ./data/certs/keyfile.pem (container ID):/app/data/certs/keyfile.pem
+     docker cp ./data/certs/certfile.pem (container ID):/app/data/certs/certfile.pem
+     ```
+   - Restart the container to apply changes:
+     ```bash
+     docker restart WOL-Docker-API
+     ```
+
 
 ---
 
@@ -42,8 +54,8 @@ The application is Docker-compatible for easy deployment but can also run native
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/wol-server.git
-   cd wol-server
+   git clone https://github.com/your-username/WOL-Docker-API.git
+   cd WOL-Docker-API
    ```
 
 2. Install dependencies:
@@ -55,9 +67,9 @@ The application is Docker-compatible for easy deployment but can also run native
    ```env
    HTTPPORT=8080
    HTTPSPORT=8443
-   PHASSPHRASE=""
-   KEYFILE=""
-   CERTFILE=""
+   PHASSPHRASE=password
+   KEYFILE=./data/certs/keyfile.pem
+   CERTFILE=./data/certs/cerfile.pem
    ```
 
 4. Start the server:
@@ -102,8 +114,8 @@ The application is Docker-compatible for easy deployment but can also run native
 - `HTTPPORT` – The port to expose the HTTP server. (Default: `8080`)
 - `HTTPSPORT` – The port to expose the HTTPS server. (Default: `8443`)
 - `PHASSPHRASE` – Optional passphrase for SSL/TLS configuration.
-- `KEYFILE` – Optional name of the certificate key file.
-- `CERTFILE` – Optional name of the certificate file.
+- `KEYFILE` – Optional path to the certificate key file.
+- `CERTFILE` – Optional path to the certificate file.
 
 ---
 
