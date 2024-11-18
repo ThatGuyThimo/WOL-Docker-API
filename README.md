@@ -1,6 +1,8 @@
 # Wake-On-LAN Server for Docker
 
-An open-source Wake-On-LAN (WOL) server built with Node.js and Express, designed to run as a lightweight Docker container.
+This application is a lightweight, open-source Wake-On-LAN (WOL) server built using Node.js and Express, designed to manage devices in a local network. It allows users to send WOL packets to wake up devices remotely and check their online status using simple API endpoints.
+
+The application is Docker-compatible for easy deployment but can also run natively on Node.js. It supports configurable HTTP and HTTPS ports, optional SSL encryption, and accepts standard MAC address formats for seamless integration. Ideal for home labs, IT administrators, or anyone looking to automate device management on their network.
 
 ## Features
 
