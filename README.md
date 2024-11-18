@@ -24,6 +24,8 @@ An open-source Wake-On-LAN (WOL) server built with Node.js and Express, designed
    HTTPPORT=8080
    HTTPSPORT=8443
    PHASSPHRASE=""
+   KEYFILE=""
+   CERTFILE=""
    ```
 
 3. Build and run the Docker container:
@@ -31,6 +33,37 @@ An open-source Wake-On-LAN (WOL) server built with Node.js and Express, designed
    docker build -t wol-server .
    docker run -p 8080:8080 -p 8443:8443 --env-file .env wol-server
    ```
+
+---
+
+### Run in Node.js (Without Docker)
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-username/wol-server.git
+   cd wol-server
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create a `.env` file for configuration:
+   ```env
+   HTTPPORT=8080
+   HTTPSPORT=8443
+   PHASSPHRASE=""
+   KEYFILE=""
+   CERTFILE=""
+   ```
+
+4. Start the server:
+   ```bash
+   node server.js
+   ```
+
+5. Access the server by sending GET or POST requests to `http://localhost:8080` or `https://localhost:8443` (if SSL is configured). Note: The server does not provide a web interface.
 
 ---
 
