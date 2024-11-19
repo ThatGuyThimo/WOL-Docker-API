@@ -16,13 +16,12 @@ const MAC_ADDRESS_regex = new RegExp('^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$'
 
 router.get('/wake', async (req, res) => {
     const response = req.query
-    console.log(response)
 
     if (response.IP_ADDRESS === undefined || response.MAC_ADDRESS === undefined || response.IP_ADDRESS === "" || response.MAC_ADDRESS === "") {
-        res.send("Missing parameters").status(400)
+        res.status(400).send("Missing parameters")
         return
     } else if (IP_ADDRESS_regex.test(response.IP_ADDRESS) == false  || MAC_ADDRESS_regex.test(response.MAC_ADDRESS) == false) {
-        res.send("One or more invalid parameters").status(400)
+        res.status(400).send("One or more invalid parameters")
         return
     }
 
@@ -37,10 +36,10 @@ router.get('/status', async (req, res) => {
     const response = req.query
 
     if (response.IP_ADDRESS === undefined || response.MAC_ADDRESS === undefined || response.IP_ADDRESS === "" || response.MAC_ADDRESS === "") {
-        res.send("Missing parameters").status(400)
+        res.status(400).send("Missing parameters")
         return
     } else if (IP_ADDRESS_regex.test(response.IP_ADDRESS) == false  || MAC_ADDRESS_regex.test(response.MAC_ADDRESS) == false) {
-        res.send("One or more invalid parameters").status(400)
+        res.status(400).send("One or more invalid parameters")
         return
     }
 
