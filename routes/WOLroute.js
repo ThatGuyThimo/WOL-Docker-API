@@ -15,8 +15,7 @@ const MAC_ADDRESS_regex = new RegExp('^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$'
 
 
 router.get('/wake', async (req, res) => {
-    const response = req.body;
-
+    const response = req.query;
     if (!response.IP_ADDRESS || !response.MAC_ADDRESS) {
         res.status(400).send("Missing parameters");
         return;
