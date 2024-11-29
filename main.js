@@ -3,6 +3,7 @@ import https from 'https'
 import fs from 'fs'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
+dotenv.config({path: '.env'})
 
 
 import { router as WOLrouter } from './routes/WOLroute.js'

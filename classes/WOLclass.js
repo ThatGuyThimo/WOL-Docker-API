@@ -28,23 +28,17 @@ export default class WOLclass {
 
     async status() {
         return new Promise((resolve, reject) => {
-            console.log('Checking status IP: ' + this.IP_ADDRESS + ' MAC: ' + this.MAC_ADDRESS)
-            const session = net_ping.createSession()
-            try {                
-                session.pingHost(this.IP_ADDRESS, (err, target) => {
-                    if (err) {
-                        console.log(err)
-                        resolve(false)
-                        session.close()
-                    } else {
-                        resolve(true)
-                        session.close()
-                    }
-                })
-            } catch (err) {
-                console.log(err)
-                reject(err)
-            }
-        })
+            console.log('Checking status IP: ' + this.IP_ADDRESS + ' MAC: ' + this.MAC_ADDRESS);
+            const session = net_ping.createSession({sessionId: new Date().getTime()});
+            session.pingHost(this.IP_ADDRESS, (err, target) => {
+                if (err) {
+                    console.log(err);
+                    resolve(false);
+                } else {
+                    resolve(true);
+                }
+                session.close();
+            });
+        });
     }
 }

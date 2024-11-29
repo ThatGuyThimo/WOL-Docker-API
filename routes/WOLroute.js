@@ -15,39 +15,45 @@ const MAC_ADDRESS_regex = new RegExp('^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$'
 
 
 router.get('/wake', async (req, res) => {
-    const response = req.query
+    const response = req.body;
 
-    if (response.IP_ADDRESS === undefined || response.MAC_ADDRESS === undefined || response.IP_ADDRESS === "" || response.MAC_ADDRESS === "") {
-        res.status(400).send("Missing parameters")
-        return
-    } else if (IP_ADDRESS_regex.test(response.IP_ADDRESS) == false  || MAC_ADDRESS_regex.test(response.MAC_ADDRESS) == false) {
-        res.status(400).send("One or more invalid parameters")
-        return
+    if (!response.IP_ADDRESS || !response.MAC_ADDRESS) {
+        res.status(400).send("Missing parameters");
+        return;
+    } else if (!IP_ADDRESS_regex.test(response.IP_ADDRESS) || !MAC_ADDRESS_regex.test(response.MAC_ADDRESS)) {
+        res.status(400).send("One or more invalid parameters");
+        return;
     }
 
-    const WOL = new WOLclass(response.MAC_ADDRESS, response.IP_ADDRESS)
+    const WOL = new WOLclass(response.MAC_ADDRESS, response.IP_ADDRESS);
 
-    const result = await WOL.wake()
-
-    res.send(result).status(200)
-})
+    try {
+        const result = await WOL.wake();
+        res.status(200).send(result);
+    } catch (error) {
+        res.status(500).send("Error waking the machine");
+    }
+});
 
 router.get('/status', async (req, res) => {
-    const response = req.query
+    const response = req.query;
 
-    if (response.IP_ADDRESS === undefined || response.MAC_ADDRESS === undefined || response.IP_ADDRESS === "" || response.MAC_ADDRESS === "") {
-        res.status(400).send("Missing parameters")
-        return
-    } else if (IP_ADDRESS_regex.test(response.IP_ADDRESS) == false  || MAC_ADDRESS_regex.test(response.MAC_ADDRESS) == false) {
-        res.status(400).send("One or more invalid parameters")
-        return
+    if (!response.IP_ADDRESS || !response.MAC_ADDRESS) {
+        res.status(400).send("Missing parameters");
+        return;
+    } else if (!IP_ADDRESS_regex.test(response.IP_ADDRESS) || !MAC_ADDRESS_regex.test(response.MAC_ADDRESS)) {
+        res.status(400).send("One or more invalid parameters");
+        return;
     }
 
-    const WOL = new WOLclass(response.MAC_ADDRESS, response.IP_ADDRESS)
+    const WOL = new WOLclass(response.MAC_ADDRESS, response.IP_ADDRESS);
 
-    const result = await WOL.status()
-
-    res.send(result).status(200)
-})
+    try {
+        const result = await WOL.status();
+        res.status(200).send(result);
+    } catch (error) {
+        res.status(500).send("Error checking the status of the machine");
+    }
+});
 
 export { router }
